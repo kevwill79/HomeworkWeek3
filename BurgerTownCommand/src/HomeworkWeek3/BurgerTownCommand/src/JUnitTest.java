@@ -11,7 +11,9 @@ class JUnitTest {
 		
 		Grill gl = new Grill();
 		Command command = new GrillOnCommand(gl);
-		int temp = 0;
+		int temp = 4;
+		
+		assertEquals(temp, gl.HIGH);
 		
 		GrillOnCommand gc = new GrillOnCommand(gl);
 		SmartSpeaker speaker = new SmartSpeaker();
