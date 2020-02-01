@@ -8,6 +8,26 @@ class JUnitTest {
 
 	@Test
 	void test() {
+		
+		Grill gl = new Grill();
+		Command command = new GrillOnCommand(gl);
+		int temp = 0;
+		
+		GrillOnCommand gc = new GrillOnCommand(gl);
+		SmartSpeaker speaker = new SmartSpeaker();
+		
+		assertEquals(0, gl.getTemp());
+		assertSame(gl, gc.grill);
+		
+		speaker.setVoiceCommand(command);
+		assertNotSame(command, gc);
+		
+		gl.perplexaHighResponse();
+		gl.perplexaLowResponse();
+		gl.perplexaMediumResponse();
+		gl.perplexaOffResponse();
+		gl.perplexaOnResponse();	
+		
 		AirFryer af = new AirFryer();
 		af.perplexaOffResponse();
 		af.perplexaOnResponse();
@@ -35,15 +55,6 @@ class JUnitTest {
 		vso.execute();
 		vso.undo();
 		vso.perplexaOnCommand();
-		
-		Grill gl = new Grill();
-		gl.perplexaHighResponse();
-		gl.perplexaLowResponse();
-		gl.perplexaMediumResponse();
-		gl.perplexaOffResponse();
-		gl.perplexaOnResponse();
-		
-		assertEquals(1, gl.getTemp());
 	}
 
 }
